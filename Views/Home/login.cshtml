@@ -1,0 +1,79 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+        <h1 class="display-4">Login to this Cool Site!&emsp;<span class="link">New User? <a id="link_text" href="/index">Sign Up</a> instead!</span></h1>
+        <br>
+        <br>
+        <br>
+        @model LoginUser
+        <form asp-controller="Home" asp-action="Login" method="post">
+        <div class="left">
+            <span class="error" asp-validation-for="Email"></span>
+            <br>
+            <input class="place_input" placeholder="Email" asp-for="Email"><br>
+
+            <span class="error" asp-validation-for="Password"></span>
+            <br>
+            <input id="myInput" class="place_input" placeholder="Password" type="password" asp-for="Password"><br>
+            <input type="checkbox" onclick="myFunction()">Show Password
+            <br>
+            <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                }
+                
+            
+            </script>
+
+            <br>
+            <button id="sub_btn" type="submit">
+            <img id="salmon" src="images/Login.png">
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+#sub_btn{
+    border: #1974d2;
+    margin: 0px;
+    padding: 0px;
+}
+#salmon{
+    height: 50px;
+    width: 125px;
+    background-color: #1974d2;
+    border: #1974d2;
+}
+.place_input{
+    text-align: center;
+}
+#link_text{
+    text-decoration: none;
+    color: salmon;
+    font-size: 25px;
+}
+.error{
+    color: red;
+}
+.link{
+    font-size: 20px;
+}
+.left{
+    display: inline-block;
+    height: 500px;
+    width: 450px;
+}
+.right{
+    display: inline-block;
+    height: 500px;
+    width: 450px;
+}
+</style>

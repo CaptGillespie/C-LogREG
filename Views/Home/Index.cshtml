@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="jquery-3.0.0.js" type="text/javascript"></script>
+ <script src="jquery-ui.js" type="text/javascript"></script>
+ <script src="script.js" type="text/javascript"></script>
+
+
+<div id="page" class="text-center">
+    <h1 class="display-4">Register to this Cool Site!&emsp;<span class="link">Already signed up? <a id="link_text" href="/login">Login</a> directly instead!</span></h1>
+    <br>
+    <br> 
+    <div class="left">
+            @model User
+            <form asp-controller="Home" asp-action="register" method="post">
+            <span class="error" asp-validation-for="FirstName"></span>
+            <br>
+            <input class="place_input" placeholder="First Name" type="text" asp-for="FirstName"><br>
+
+            <span class="error" asp-validation-for="LastName"></span>
+            <br>
+            <input class="place_input" placeholder="Last Name" type="text" asp-for="LastName"><br>
+            
+            <span class="error" asp-validation-for="Email"></span>
+            <br>
+            <input class="place_input" placeholder="Email" asp-for="Email"><br>
+    
+        </div>
+        <div class="right">
+            <span class="error" asp-validation-for="Password"></span>
+            <input class="place_input" placeholder="Password" asp-for="Password">
+            <br>
+            <br>
+            <span class="error" asp-validation-for="Confirm"></span>
+            <input id="myInput" class="place_input" id="myInput" placeholder="Confirm Password" asp-for="Confirm">
+            <br>
+            <br>
+            <input type="checkbox" onclick="myFunction()"><span id="pink"> Show Password</span>
+
+            <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                }
+            </script>
+        </div>
+        <br>
+        <br>
+        <div class="bottom">
+            <button id="sub_btn" type="submit">
+            <img id="salmon" src="images/Signup.png">
+            </button>
+            
+        </div>
+            </form>
+</div>
+<script>
+$(document).ready(function() {
+
+ $("#sub_btn").click(function(){
+    // shake effect
+    $( "#page" ).effect( "shake" );
+ });
+
+</script>
+
+<style>
+#pink{
+    color: salmon;
+}
+#sub_btn{
+    border: #1974d2;
+    margin: 0px;
+    padding: 0px;
+}
+.bottom{
+    height: 85px;
+    width: 200px;
+    margin-left: 465px;
+}
+#salmon{
+    height: 50px;
+    width: 125px;
+    background-color: #1974d2;
+    border: #1974d2;
+}
+.place_input{
+    text-align: center;
+}
+#link_text{
+text-decoration: none;
+color: salmon;
+font-size: 25px;
+}
+.error{
+color: red;
+}
+.link{
+    font-size: 20px;
+}
+.h1{
+    display: inline-block;
+}
+.left{
+    display: inline-block;
+    height: 150px;
+    width: 250px;
+}
+.right{
+    display: inline-block;
+    height: 150px;
+    width: 250px;
+    vertical-align: top;
+}
+</style>
